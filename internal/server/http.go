@@ -1,9 +1,9 @@
 package server
 
 import (
-	v1 "quickstart/api/helloworld/v1"
-	"quickstart/internal/conf"
-	"quickstart/internal/service"
+	v1 "landscape/api/landscape/v1"
+	"landscape/internal/conf"
+	"landscape/internal/service"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
@@ -11,7 +11,7 @@ import (
 )
 
 // NewHTTPServer new an HTTP server.
-func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.Logger) *http.Server {
+func NewHTTPServer(c *conf.Server, landscape *service.LandscapeServiceService, logger log.Logger) *http.Server {
 	var opts = []http.ServerOption{
 		http.Middleware(
 			recovery.Recovery(),
@@ -27,6 +27,6 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.L
 		opts = append(opts, http.Timeout(c.Http.Timeout.AsDuration()))
 	}
 	srv := http.NewServer(opts...)
-	v1.RegisterGreeterHTTPServer(srv, greeter)
+	v1.RegisterLandscapeServiceHTTPServer(srv, landscape)
 	return srv
 }

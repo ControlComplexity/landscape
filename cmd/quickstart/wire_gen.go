@@ -7,11 +7,11 @@
 package main
 
 import (
-	"quickstart/internal/biz"
-	"quickstart/internal/conf"
-	"quickstart/internal/data"
-	"quickstart/internal/server"
-	"quickstart/internal/service"
+	"landscape/internal/biz"
+	"landscape/internal/conf"
+	"landscape/internal/data"
+	"landscape/internal/server"
+	"landscape/internal/service"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
@@ -25,11 +25,11 @@ func wireApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*
 	if err != nil {
 		return nil, nil, err
 	}
-	greeterRepo := data.NewGreeterRepo(dataData, logger)
-	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
-	greeterService := service.NewLandscapeServiceService(greeterUsecase)
-	grpcServer := server.NewGRPCServer(confServer, greeterService, logger)
-	httpServer := server.NewHTTPServer(confServer, greeterService, logger)
+	landscapeRepo := data.NewEssayRepo(dataData, logger)
+	landscapeUsecase := biz.NewLandscapeUsecase(landscapeRepo, logger)
+	landscapeService := service.NewLandscapeServiceService(landscapeUsecase)
+	grpcServer := server.NewGRPCServer(confServer, landscapeService, logger)
+	httpServer := server.NewHTTPServer(confServer, landscapeService, logger)
 	app := newApp(logger, grpcServer, httpServer)
 	return app, func() {
 		cleanup()

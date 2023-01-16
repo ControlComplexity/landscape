@@ -1,7 +1,7 @@
 package data
 
 import (
-	"quickstart/internal/conf"
+	"landscape/internal/conf"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"

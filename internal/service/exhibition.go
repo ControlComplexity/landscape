@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	pb "quickstart/api/landscape/v1"
+	pb "landscape/api/landscape/v1"
 )
 
 type ExhibitionService struct {
