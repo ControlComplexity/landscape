@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package api.landscape.v1;
+
+option go_package = "quickstart/api/landscape/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.landscape.v1";
+
+service Exhibition {
+	rpc CreateExhibition (CreateExhibitionRequest) returns (CreateExhibitionReply);
+	rpc UpdateExhibition (UpdateExhibitionRequest) returns (UpdateExhibitionReply);
+	rpc DeleteExhibition (DeleteExhibitionRequest) returns (DeleteExhibitionReply);
+	rpc GetExhibition (GetExhibitionRequest) returns (GetExhibitionReply);
+	rpc ListExhibition (ListExhibitionRequest) returns (ListExhibitionReply);
+}
+
+message CreateExhibitionRequest {}
+message CreateExhibitionReply {}
+
+message UpdateExhibitionRequest {}
+message UpdateExhibitionReply {}
+
+message DeleteExhibitionRequest {}
+message DeleteExhibitionReply {}
+
+message GetExhibitionRequest {}
+message GetExhibitionReply {}
+
+message ListExhibitionRequest {}
+message ListExhibitionReply {}
